@@ -1,0 +1,91 @@
+```sql
+CREATE TABLE PERSON(
+driver_id varchar(30),
+name varchar(50),
+address varchar(100),
+PRIMARY KEY (driver_id)
+);
+
+CREATE TABLE CAR(
+regno varchar(20),
+model varchar(30),
+Year int,
+PRIMARY KEY (regno)
+);
+
+CREATE TABLE ACCIDENT(
+report_number int,
+accd_date date,
+location varchar(50),
+PRIMARY KEY (report_number)
+);
+
+CREATE TABLE OWNS(
+driver_id varchar(30),
+regno varchar(20),
+PRIMARY KEY (regno,driver_id),
+FOREIGN KEY(regno) REFERENCES CAR(regno),
+FOREIGN KEY(driver_id) REFERENCES PERSON(driver_id)
+);
+
+CREATE TABLE PARTICIPATED(
+driver_id varchar(30),
+regno varchar(20),
+report_number int,
+damage_amount int,
+PRIMARY KEY (regno,driver_id,report_number),
+FOREIGN KEY(regno) REFERENCES CAR(regno),
+FOREIGN KEY(driver_id) REFERENCES PERSON(driver_id),
+FOREIGN KEY(report_number) REFERENCES ACCIDENT(report_number)
+);
+
+INSERT INTO PERSON (driver_id, name, address) 
+VALUES 
+  ('D001', 'Walter White', '308 Negra Arroyo Lane, Albuquerque, NM');
+INSERT INTO PERSON (driver_id, name, address) 
+VALUES
+  ('D002', 'Jesse Pinkman', '9809 Margo St, Albuquerque, NM');
+INSERT INTO PERSON (driver_id, name, address) 
+VALUES
+  ('D003', 'Saul Goodman', '9801 Lomas Blvd NE, Albuquerque, NM');
+INSERT INTO PERSON (driver_id, name, address) 
+VALUES
+  ('D004', 'Hank Schrader', '7123 Marlowe St, Albuquerque, NM');
+INSERT INTO PERSON (driver_id, name, address) 
+VALUES
+  ('D005', 'Skyler White', '308 Negra Arroyo Lane, Albuquerque, NM');
+
+INSERT INTO CAR (regno, model, Year) 
+VALUES 
+  ('BB1234', 'Pontiac Aztek', 2004), 
+  ('BB5678', 'Chevrolet Monte Carlo', 2000), 
+  ('BB9876', 'Cadillac DeVille', 2004), 
+  ('BB2468', 'Jeep Cherokee', 2009), 
+  ('BB1357', 'Chrysler 300C', 2007);
+
+INSERT INTO ACCIDENT (report_number, accd_date, location) 
+VALUES 
+  (1001, TO_DATE('2010-03-22', 'YYYY-MM-DD'), 'Albuquerque, NM'),  
+  (1002, TO_DATE('2010-05-15', 'YYYY-MM-DD'), 'Albuquerque, NM'),  
+  (1003, TO_DATE('2011-07-13', 'YYYY-MM-DD'), 'Albuquerque, NM'),  
+  (1004, TO_DATE('2012-01-08', 'YYYY-MM-DD'), 'Albuquerque, NM'),  
+  (1005, TO_DATE('2011-09-19', 'YYYY-MM-DD'), 'Albuquerque, NM');  
+
+INSERT INTO OWNS (driver_id, regno) 
+VALUES 
+  ('D001', 'BB1234'),  
+  ('D002', 'BB5678'),  
+  ('D003', 'BB9876'),  
+  ('D004', 'BB2468'),  
+  ('D005', 'BB1357');  
+
+INSERT INTO PARTICIPATED (driver_id, regno, report_number, damage_amount) 
+VALUES 
+  ('D001', 'BB1234', 1001, 2500),  
+  ('D002', 'BB5678', 1002, 1800),  
+  ('D003', 'BB9876', 1003, 3000),  
+  ('D004', 'BB2468', 1004, 2200),  
+  ('D005', 'BB1357', 1005, 2700);  
+
+
+```

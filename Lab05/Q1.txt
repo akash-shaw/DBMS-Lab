@@ -1,0 +1,137 @@
+create table student (
+regno varchar(20),
+name varchar(50),
+major varchar(20),
+bdate date,
+primary key (regno) );
+
+create table course (
+course# int,
+cname varchar(30),
+dept varchar(30),
+primary key (course#) );
+
+create table enroll (
+regno varchar(20),
+course# int,
+book_isbn int,
+primary key (regno,course#,book_isbn),
+foreign key (regno) references student(regno),
+foreign key (course#) references course(course#),
+foreign key (book_isbn) references text(book_isbn),
+sem int );
+
+create table book_adoption (
+course# int,
+sem int,
+book_isbn int,
+foreign key (course#) references course(course#),
+foreign key (book_isbn) references text(book_isbn) );
+
+create table text(
+book_isbn int,
+booktitle varchar(50),
+publisher varchar(50),
+author varchar(50),
+primary key (book_isbn) );
+
+insert into student values ('174', 'Rishit', 'Networking', to_date('2005/03/28','yyyy-mm-dd'));
+insert into student values ('100', 'Aditanshu', 'Networking', to_date('2005/03/19','yyyy-mm-dd'));
+insert into student values ('101', 'Rohan', 'IoT', to_date('2005/10/05','yyyy-mm-dd'));
+insert into student values ('102', 'Sahil', 'IoT', to_date('2005/05/28','yyyy-mm-dd'));
+insert into student values ('103', 'Hasil', 'Networking', to_date('2005/09/28','yyyy-mm-dd'));
+insert into student values ('104', 'Vatsal', 'VLSI', to_date('2005/01/24','yyyy-mm-dd'));
+insert into student values ('105', 'Pawani', 'ECE', to_date('2005/10/29','yyyy-mm-dd'));
+insert into student values ('106', 'Tejas', 'AI', to_date('2005/07/12','yyyy-mm-dd'));
+insert into student values ('107', 'Rohit', 'Machine Learning', to_date('2005/03/01','yyyy-mm-dd'));
+insert into student values ('108', 'Anjishnu', 'Machine Learning', to_date('2005/06/04','yyyy-mm-dd'));
+insert into student values ('109', 'Yashraj', 'Blockchain', to_date('2005/03/28','yyyy-mm-dd'));
+insert into student values ('110', 'Sarah', 'Thermal', to_date('2005/07/12','yyyy-mm-dd'));
+insert into student values ('111', 'Kritagaya', 'EEE', to_date('2005/03/28','yyyy-mm-dd'));
+insert into student values ('112', 'Narendhar', 'Thermal', to_date('2004/11/14','yyyy-mm-dd'));
+insert into student values ('113', 'Rishi', 'Accounting', to_date('2005/03/15','yyyy-mm-dd'));
+
+
+insert into course values ('001', 'CCE', 'ICT');
+insert into course values ('002', 'IT', 'ICT');
+insert into course values ('003', 'CS AI', 'CSE');
+insert into course values ('004', 'DS', 'DS');
+insert into course values ('005', 'Mechanical', 'Mechanical');
+insert into course values ('006', 'Fintech', 'CSE');
+insert into course values ('007', 'ECE', 'ECE');
+insert into course values ('008', 'EEE', 'ECE');
+
+
+insert into text values ('500', 'Modern Operating Systems', 'Pearson', 'Tatenbaum');
+insert into text values ('501', 'Software Design', 'Pearson', 'Roger.B.Pressman');
+insert into text values ('502', 'Engineering Mathematics', 'Arihant', 'BS Grewal');
+insert into text values ('503', 'BME', 'Pearson', 'HRH');
+insert into text values ('504', 'BET', 'MIT', 'B');
+insert into text values ('505', 'BE', 'Pearson', 'SK');
+insert into text values ('506', 'DS', 'CBSE', 'RR');
+insert into text values ('507', 'FPGA', 'IIT-B', 'Tatenbaum');
+insert into text values ('508', 'PSUC', 'Pearson', 'A');
+insert into text values ('509', 'EVS', 'Pearson', 'BKT');
+insert into text values ('510', 'AIML', 'Pearson', 'Tatenbaum');
+insert into text values ('511', 'FLAT', 'IIT-M', 'Tatenbaum');
+insert into text values ('512', 'OS', 'SRM', 'VM');
+insert into text values ('513', 'OOP', 'VIT', 'RA');
+insert into text values ('514', 'ES', 'PES', 'Tatenbaum');
+insert into text values ('515', 'CNP', 'RV', 'RA');
+
+insert into enroll values ('174', '001','500','3');
+insert into enroll values ('109', '001','501','3');
+insert into enroll values ('174', '003','502','3');
+insert into enroll values ('110', '005','503','3');
+insert into enroll values ('104', '007','507','3');
+insert into enroll values ('105', '007','508','3');
+insert into enroll values ('108', '001','509','3');
+
+insert into book_adoption values ('001', '3', '500');
+insert into book_adoption values ('001', '3', '501');
+insert into book_adoption values ('001', '1', '502');
+insert into book_adoption values ('005', '1', '503');
+insert into book_adoption values ('007', '2', '504');
+insert into book_adoption values ('008', '1', '505');
+insert into book_adoption values ('001', '3', '506');
+insert into book_adoption values ('008', '4', '507');
+insert into book_adoption values ('003', '2', '508');
+insert into book_adoption values ('005', '2', '509');
+insert into book_adoption values ('003', '4', '510');
+insert into book_adoption values ('003', '3', '511');
+insert into book_adoption values ('001', '4', '512');
+insert into book_adoption values ('001', '3', '513');
+insert into book_adoption values ('002', '4', '514');
+insert into book_adoption values ('001', '4', '515');
+
+alter table student modify name varchar2(20);
+alter table text modify publisher varchar2(20);
+alter table text modify author varchar2(20);
+alter table text modify booktitle varchar2(25);
+
+----------------------------------------------------------------------------------------------------------
+//Q1 
+select * 
+from course 
+where course# in (select course#
+from book_adoption
+group by course#
+having count(course#)>1
+);
+
+
+//Q2 
+select dept 
+from (text natural join book_adoption) join course using (course#)
+where publisher = 'Pearson';
+
+//Q3
+select regno 
+from enroll 
+group by regno
+having count(regno)>1;
+
+//Q4
+select * 
+from student
+where regno not in (select distinct regno from enroll);
