@@ -62,6 +62,7 @@
             this.TBbalance.ReadOnly = true;
             this.TBbalance.Size = new System.Drawing.Size(202, 20);
             this.TBbalance.TabIndex = 2;
+            this.TBbalance.TextChanged += new System.EventHandler(this.TBbalance_TextChanged);
             // 
             // BTNtransaction
             // 
@@ -71,6 +72,7 @@
             this.BTNtransaction.TabIndex = 3;
             this.BTNtransaction.Text = "New Transaction";
             this.BTNtransaction.UseVisualStyleBackColor = true;
+            this.BTNtransaction.Click += new System.EventHandler(this.BTNtransaction_Click);
             // 
             // label1
             // 
@@ -90,6 +92,7 @@
             this.TBtransactions.Size = new System.Drawing.Size(254, 153);
             this.TBtransactions.TabIndex = 5;
             this.TBtransactions.Text = "";
+            this.TBtransactions.TextChanged += new System.EventHandler(this.TBtransactions_TextChanged);
             // 
             // Form2
             // 

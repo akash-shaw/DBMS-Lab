@@ -38,6 +38,7 @@ namespace WindowsFormsApplication1
         {
             saveFileDialog1.ShowDialog();
             string fName = saveFileDialog1.FileName;
+            if (fName == null || fName == "") return;
             StreamWriter sw = new StreamWriter(fName);
             sw.Write(richTextBox1.Text);
             sw.Flush();

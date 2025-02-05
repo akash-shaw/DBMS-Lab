@@ -9,3 +9,4 @@ E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingAp
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.csprojResolveAssemblyReference.cache
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form2.resources
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form3.resources
+E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form4.resources

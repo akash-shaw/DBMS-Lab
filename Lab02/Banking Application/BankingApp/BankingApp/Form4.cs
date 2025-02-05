@@ -19,14 +19,22 @@ namespace BankingApp
 
         private void BTNcredit_Click(object sender, EventArgs e)
         {
+            if (TBamount.Text == null) return;
             float amount = float.Parse(TBamount.Text);
             User.transaction(amount, "credit");
+            Form2 f2 = new Form2();
+            this.Hide();
+            f2.Show();
         }
 
         private void BTNdebit_Click(object sender, EventArgs e)
         {
+            if (TBamount.Text == null) return;
             float amount = float.Parse(TBamount.Text);
             User.transaction(amount, "debit");
+            Form2 f2 = new Form2();
+            this.Hide();
+            f2.Show();
         }
     }
 }
