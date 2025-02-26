@@ -1,0 +1,69 @@
+set serveroutput on;
+
+---
+
+create or replace procedure hello_world
+is
+begin
+DBMS_OUTPUT.PUT_LINE('Hello World');
+end hello_world;
+/
+
+
+---
+
+
+create or replace procedure greet
+(name in varchar default 'Guest')
+is
+begin
+dbms_output.put_line('Hello, '||name||'! Welcome to PL/SQL.');
+end greet;
+/
+
+
+execute greet('Akash');
+
+beign
+greet('Akash');
+end;
+/
+
+
+---
+
+create or replace procedure find_square(
+p_number in number,
+p_result out number
+)
+is
+begin
+p_result := p_number * p_number;
+end find_square;
+/
+
+
+declare
+result number;
+begin
+find_square(5,result);
+dbms_output.put_line('square of 5 is ' || result);
+end;
+/
+
+
+---
+
+DECLARE
+   num INT := 110;
+BEGIN
+   IF (num > 0) THEN
+      DBMS_OUTPUT.PUT_LINE('Number is positive.');
+   ELSIF num < 0 THEN
+      DBMS_OUTPUT.PUT_LINE('Number is negative.');
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('Number is zero.');
+   END IF;
+END;
+/
+

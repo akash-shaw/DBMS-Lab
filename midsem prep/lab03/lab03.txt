@@ -1,0 +1,93 @@
+create table PERSON (
+driver_id varchar(10),
+name varchar(20),
+address varchar(30),
+primary key (driver_id)
+);
+
+create table CAR (
+regno varchar(10),
+model varchar(20),
+Year int,
+primary key (regno)
+);
+
+create table ACCIDENT (
+report_number int,
+accd_date date,
+location varchar(30),
+primary key (report_number)
+); 
+
+create table OWNS(
+driver_id varchar(10),
+regno varchar(10),
+primary key (driver_id, regno),
+foreign key (driver_id) references PERSON(driver_id),
+foreign key (regno) references CAR(regno)
+);
+
+create table PARTICIPATED (
+driver_id varchar(10),
+regno varchar(10),
+report_number int,
+damage_amount int,
+primary key (driver_id, regno, report_number),
+foreign key (driver_id) references PERSON(driver_id),
+foreign key (regno) references CAR(regno),
+foreign key (report_number) references ACCIDENT(report_number)
+); 
+
+INSERT INTO PERSON VALUES ('D001', 'Alice Johnson', '123 Main St, NY');
+INSERT INTO PERSON VALUES ('D002', 'Bob Smith', '456 Oak Ave, LA');
+INSERT INTO PERSON VALUES ('D003', 'Charlie Brown', '789 Pine Rd, TX');
+INSERT INTO PERSON VALUES ('D004', 'David White', '321 Cedar Blvd, FL');
+INSERT INTO PERSON VALUES ('D005', 'Eve Green', '654 Maple Dr, WA');
+
+INSERT INTO CAR VALUES ('R001', 'Toyota Corolla', 2018);
+INSERT INTO CAR VALUES ('R002', 'Honda Civic', 2020);
+INSERT INTO CAR VALUES ('R003', 'Ford Focus', 2017);
+INSERT INTO CAR VALUES ('R004', 'Chevrolet Malibu', 2019);
+INSERT INTO CAR VALUES ('R005', 'Tesla Model 3', 2022);
+
+INSERT INTO ACCIDENT VALUES (101, TO_DATE('2023-01-15', 'YYYY-MM-DD'), '5th Avenue, NY');
+INSERT INTO ACCIDENT VALUES (102, TO_DATE('2023-03-22', 'YYYY-MM-DD'), 'Sunset Blvd, LA');
+INSERT INTO ACCIDENT VALUES (103, TO_DATE('2023-05-10', 'YYYY-MM-DD'), 'Main Street, TX');
+INSERT INTO ACCIDENT VALUES (104, TO_DATE('2023-07-19', 'YYYY-MM-DD'), 'Ocean Drive, FL');
+INSERT INTO ACCIDENT VALUES (105, TO_DATE('2023-09-05', 'YYYY-MM-DD'), 'Broadway, WA');
+
+INSERT INTO OWNS VALUES ('D001', 'R001');
+INSERT INTO OWNS VALUES ('D002', 'R002');
+INSERT INTO OWNS VALUES ('D003', 'R003');
+INSERT INTO OWNS VALUES ('D004', 'R004');
+INSERT INTO OWNS VALUES ('D005', 'R005');
+
+INSERT INTO PARTICIPATED VALUES ('D001', 'R001', 101, 5000);
+INSERT INTO PARTICIPATED VALUES ('D002', 'R002', 102, 7000);
+INSERT INTO PARTICIPATED VALUES ('D003', 'R003', 103, 3000);
+INSERT INTO PARTICIPATED VALUES ('D004', 'R004', 104, 4500);
+INSERT INTO PARTICIPATED VALUES ('D005', 'R005', 105, 6000);
+
+
+
+
+
+update participated
+set damage_amount = 25000
+where regno = 'R003' and report_number = 103
+;
+
+
+delete from accident
+where extract(month from accd_date)=1
+;
+
+
+alter table accident
+add type varchar(10)
+;
+
+
+alter table accident
+drop column type
+;

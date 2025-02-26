@@ -7,3 +7,13 @@ E:\230953254\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\
 E:\230953254\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
 E:\230953254\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 E:\230953254\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.AssemblyReference.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CoreCompileInputs.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab01\Introduction\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb

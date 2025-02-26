@@ -10,3 +10,16 @@ E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingAp
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form2.resources
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form3.resources
 E:\230953254\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form4.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\bin\Debug\BankingApp.exe.config
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\bin\Debug\BankingApp.exe
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\bin\Debug\BankingApp.pdb
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.csproj.AssemblyReference.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form1.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form2.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form3.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Form4.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.Properties.Resources.resources
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.csproj.GenerateResource.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.csproj.CoreCompileInputs.cache
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.exe
+C:\Users\akash\Documents\repos\DBMS-Lab\Lab02\Banking Application\BankingApp\BankingApp\obj\Debug\BankingApp.pdb

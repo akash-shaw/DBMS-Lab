@@ -1,0 +1,108 @@
+create table STUDENT (
+regno varchar(10) primary key,
+name varchar(15),
+major varchar(15),
+bdate date
+);
+
+create table COURSE (
+courseid int primary key,
+cname varchar(10),
+dept varchar(10)
+);
+
+create table TEXT (
+book_isbn int primary key,
+booktitle varchar(20),
+publisher varchar(20),
+author varchar(20)
+); 
+
+create table ENROLL (
+regno varchar(10),
+courseid int,
+sem int, 
+book_isbn int,
+primary key (regno, courseid, book_isbn),
+foreign key (regno) references student(regno),
+foreign key (courseid) references course(courseid),
+foreign key (book_isbn) references text(book_isbn)
+);
+
+create table BOOK_ADOPTION (
+courseid int,
+sem int,
+book_isbn int,
+primary key (courseid, book_isbn),
+foreign key (courseid) references course(courseid),
+foreign key (book_isbn) references text(book_isbn)
+); 
+
+
+INSERT INTO STUDENT VALUES ('S101', 'Alice', 'CS', TO_DATE('2003-05-10', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S102', 'Bob', 'EE', TO_DATE('2002-08-15', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S103', 'Charlie', 'ME', TO_DATE('2003-03-22', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S104', 'David', 'CS', TO_DATE('2004-07-30', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S105', 'Eve', 'IT', TO_DATE('2001-11-11', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S106', 'Frank', 'IT', TO_DATE('2001-09-25', 'YYYY-MM-DD'));
+INSERT INTO STUDENT VALUES ('S107', 'Grace', 'EE', TO_DATE('2003-12-12', 'YYYY-MM-DD'));
+
+
+INSERT INTO COURSE VALUES (101, 'DBMS', 'CS');
+INSERT INTO COURSE VALUES (102, 'Circuits', 'EE');
+INSERT INTO COURSE VALUES (103, 'Thermo', 'ME');
+INSERT INTO COURSE VALUES (104, 'OS', 'CS');
+INSERT INTO COURSE VALUES (105, 'DS', 'IT');
+INSERT INTO COURSE VALUES (106, 'AI', 'IT');
+INSERT INTO COURSE VALUES (107, 'EmbedSys', 'EE');
+
+INSERT INTO TEXT VALUES (1111, 'DB Mgmt', 'Pearson', 'Elmasri');
+INSERT INTO TEXT VALUES (2222, 'Circuits', 'McGrawHill', 'Millman');
+INSERT INTO TEXT VALUES (3333, 'HMT', 'Wiley', 'Cengel');
+INSERT INTO TEXT VALUES (4444, 'Modern OS', 'Prentice', 'Tanenbaum');
+INSERT INTO TEXT VALUES (5555, 'Algo DS', 'O Reilly', 'Cormen');
+INSERT INTO TEXT VALUES (6666, 'AI Found', 'Pearson', 'Russell');
+INSERT INTO TEXT VALUES (7777, 'Embed Sys', 'Wiley', 'Smith');
+INSERT INTO TEXT VALUES (8888, 'Adv DBMS', 'Pearson', 'Garcia');
+INSERT INTO TEXT VALUES (9999, 'Neural Net', 'Pearson', 'Goodfellow');
+
+INSERT INTO BOOK_ADOPTION VALUES (101, 1, 1111);
+INSERT INTO BOOK_ADOPTION VALUES (101, 1, 8888);
+INSERT INTO BOOK_ADOPTION VALUES (102, 1, 2222);
+INSERT INTO BOOK_ADOPTION VALUES (103, 1, 3333);
+INSERT INTO BOOK_ADOPTION VALUES (104, 1, 4444);
+INSERT INTO BOOK_ADOPTION VALUES (105, 1, 5555);
+INSERT INTO BOOK_ADOPTION VALUES (106, 1, 6666);
+INSERT INTO BOOK_ADOPTION VALUES (106, 1, 9999);
+INSERT INTO BOOK_ADOPTION VALUES (107, 1, 7777);
+
+INSERT INTO ENROLL VALUES ('S101', 101, 1, 1111);
+INSERT INTO ENROLL VALUES ('S101', 104, 1, 4444);
+INSERT INTO ENROLL VALUES ('S102', 102, 1, 2222);
+INSERT INTO ENROLL VALUES ('S102', 107, 1, 7777);
+INSERT INTO ENROLL VALUES ('S103', 103, 1, 3333);
+INSERT INTO ENROLL VALUES ('S103', 106, 1, 6666);
+INSERT INTO ENROLL VALUES ('S104', 105, 1, 5555);
+INSERT INTO ENROLL VALUES ('S104', 106, 1, 9999);
+INSERT INTO ENROLL VALUES ('S105', 101, 1, 8888);
+INSERT INTO ENROLL VALUES ('S105', 106, 1, 6666);
+INSERT INTO ENROLL VALUES ('S106', 103, 1, 3333);
+INSERT INTO ENROLL VALUES ('S106', 102, 1, 2222);
+INSERT INTO ENROLL VALUES ('S107', 104, 1, 4444);
+INSERT INTO ENROLL VALUES ('S107', 105, 1, 5555);
+
+
+
+a.
+
+select c.cname, c.courseid, count(b.book_isbn) as "Books adopted"
+from course c
+left join book_adoption b on c.courseid=b.courseid
+join text t on b.book_isbn=t.book_isbn
+group by c.courseid, c.cname
+having count(b.book_isbn)>1
+;
+
+
+b.
+

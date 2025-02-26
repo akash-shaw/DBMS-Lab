@@ -1,0 +1,43 @@
+select count(distinct pt.driver_id) as "total people involved in accidents in 2008"
+from accident a
+join participated pt on a.report_number=pt.report_number
+where extract(year from a.accd_date)=2008
+;
+
+
+
+select count(distinct p.report_number) as "Accident count"
+from participated pt
+join car c on pt.regno=c.regno
+where c.model='Honda Civic'
+;
+
+
+
+select pr.name as owner_name, count(pt.report_number) as "NO. of Accidents", sum(pt.damage_amount) as "Total Damage"
+from participated pt join person pr on pt.driver_id = pr.driver_id
+group by pr.name
+order by sum(pt.damage_amount) desc
+;
+
+
+select pr.name, pr.driver_id, count(pt.report_number) as accidents
+from person pr
+join participated pt on pr.driver_id = pt.driver_id
+join accident a on pt.report_number = a.report_number
+group by pr.driver_id, pr.name
+having count(pt.report_number)<2
+;
+
+
+
+select pr.name, pr.driver_id, count(pt.report_number) as accidents
+from person pr
+full join owns o on pr.driver_id=o.driver_id
+full join participated pt on pr.driver_id = pt.driver_id
+full join accident a on pt.report_number = a.report_number
+group by pr.driver_id, pr.name
+having count(pt.report_number)=0
+;
+
+
