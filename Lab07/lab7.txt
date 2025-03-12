@@ -1,0 +1,20 @@
+create or replace function myfunc 
+(name IN varchar)
+RETURN varchar 
+as
+begin 
+return name;
+end myfunc;
+/
+
+CREATE OR REPLACE PROCEDURE myproc
+AS
+BEGIN
+select * from actors; 
+END;
+/
+
+SELECT name FROM movies m
+JOIN  cast c ON (m.movieid = c.movieid)
+JOIN actors a ON (c.actorid = a.actorid)
+where m.ggenre='sci-fi';
