@@ -50,5 +50,10 @@ namespace WindowsFormsApplication1
             TB_UN.Text = "";
             TB_PW.Text = "";
         }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

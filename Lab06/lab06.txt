@@ -1,0 +1,67 @@
+-- 1. Function to return total number of accidents in a particular year
+CREATE OR REPLACE FUNCTION get_total_accidents(p_year INT) RETURN INT IS
+    v_total INT;
+BEGIN
+    SELECT COUNT(*) INTO v_total
+    FROM ACCIDENT
+    WHERE EXTRACT(YEAR FROM accd_date) = p_year;
+    
+    RETURN v_total;
+END;
+/
+
+-- 2. Procedure to display total damage caused due to an accident for a particular driver in a specific year
+CREATE OR REPLACE PROCEDURE get_total_damage(
+    p_driver_id PERSON.driver_id%TYPE,
+    p_year INT,
+    o_total_damage OUT INT
+) AS
+BEGIN
+    SELECT NVL(SUM(damage_amount), 0) INTO o_total_damage
+    FROM PARTICIPATED P
+    JOIN ACCIDENT A ON P.report_number = A.report_number
+    WHERE P.driver_id = p_driver_id AND EXTRACT(YEAR FROM A.accd_date) = p_year;
+END;
+/
+
+-- 3. Procedure to display accident information for a particular location
+CREATE OR REPLACE PROCEDURE get_accidents_by_location(
+    p_location ACCIDENT.location%TYPE
+) AS
+BEGIN
+    FOR rec IN (
+        SELECT * FROM ACCIDENT WHERE location = p_location
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE('Report Number: ' || rec.report_number || ', Date: ' || rec.accd_date);
+    END LOOP;
+END;
+/
+
+-- 4. Procedure to identify drivers who have never been involved in any accidents
+CREATE OR REPLACE PROCEDURE get_drivers_without_accidents AS
+BEGIN
+    FOR rec IN (
+        SELECT P.driver_id, P.name, P.address 
+        FROM PERSON P
+        WHERE NOT EXISTS (
+            SELECT 1 FROM PARTICIPATED PA WHERE PA.driver_id = P.driver_id
+        )
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE('Driver ID: ' || rec.driver_id || ', Name: ' || rec.name || ', Address: ' || rec.address);
+    END LOOP;
+END;
+/
+
+-- 5. Function to return the total number of accidents involving a car based on its license number
+CREATE OR REPLACE FUNCTION get_total_accidents_by_license(
+    p_regno CAR.regno%TYPE
+) RETURN INT IS
+    v_total INT;
+BEGIN
+    SELECT COUNT(DISTINCT report_number) INTO v_total
+    FROM PARTICIPATED
+    WHERE regno = p_regno;
+    
+    RETURN v_total;
+END;
+/
